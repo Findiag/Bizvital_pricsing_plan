@@ -413,8 +413,8 @@ function setView(view) {
   if (head)   head.textContent = isCfo ? 'CFO Value' : 'Business Owner Value';
 }
 var isAnnual = false;
-var pricing = { starter:{monthly:4999,annual:4166}, growth:{monthly:9999,annual:8332}, enterprise:{monthly:13499,annual:11249} };
-var savingsMap = { starter:'\u20b99,996', growth:'\u20b920,004', enterprise:'\u20b927,000' };
+var pricing = { starter:{monthly:502,annual:417}, growth:{monthly:1305,annual:1083}, enterprise:{monthly:2510,annual:2083} };
+var savingsMap = { starter:'\u20b91,025', growth:'\u20b92,661', enterprise:'\u20b95,121' };
 function setBilling(mode) { isAnnual = mode === 'annual'; applyBilling(); }
 function toggleBilling()  { isAnnual = !isAnnual; applyBilling(); }
 function fmt(n) { return n.toLocaleString('en-IN'); }
@@ -444,8 +444,8 @@ function applyBilling() {
     if(sub) sub.textContent=isAnnual?'per month \u00b7 billed \u20b9'+fmt(val*12)+'/yr':'per month \u00b7 billed monthly';
   });
   var thS=document.getElementById('th-starter'),thG=document.getElementById('th-growth');
-  if(thS) thS.textContent=isAnnual?'\u20b9416/mo':'\u20b9499/mo';
-  if(thG) thG.textContent=isAnnual?'\u20b9832/mo':'\u20b9999/mo';
+  if(thS) thS.textContent=isAnnual?'\u20b9417/mo':'\u20b9502/mo';
+  if(thG) thG.textContent=isAnnual?'\u20b91,083/mo':'\u20b91,305/mo';
   document.querySelectorAll('.fv').forEach(function(el){
     var s=el.dataset.s,sa=el.dataset.sa,g=el.dataset.g,ga=el.dataset.ga,d='';
     if(g) d=isAnnual?'\u20b9'+ga:'\u20b9'+g;
@@ -453,7 +453,7 @@ function applyBilling() {
     else d='\u2014';
     el.textContent=d;
   });
-  var sTot=isAnnual?4166:4999,gTot=isAnnual?8332:9999,eTot=isAnnual?11249:13499;
+  var sTot=isAnnual?417:502,gTot=isAnnual?1083:1305,eTot=isAnnual?2083:2510;
   var tS=document.getElementById('tbl-total-starter'),tG=document.getElementById('tbl-total-growth'),
       bl=document.getElementById('tbl-billing-label'),pS=document.getElementById('tbl-price-starter'),
       pG=document.getElementById('tbl-price-growth'),pE=document.getElementById('tbl-price-enterprise');
@@ -515,18 +515,18 @@ function applyBilling() {
 <div class="toggle-knob"></div>
 </div>
 <span class="billing-label" id="lbl-annual" onclick="setBilling('annual')">
-Annual <span class="billing-save-badge">Save 17%</span>
+Annual <span class="billing-save-badge">Save 17% — ₹4,999/yr · ₹12,999/yr · ₹24,999/yr</span>
 </span>
 </div>
 <div class="plans-grid">
 <div class="plan-card">
 <span class="plan-tag tag-starter">Starter</span>
 <div class="plan-price">
-<sup>₹</sup><span class="price-amount" id="price-starter">4,999</span>
+<sup>₹</sup><span class="price-amount" id="price-starter">502</span>
 <span class="annual-badge" id="badge-starter">ANNUAL</span>
 </div>
-<div class="save-line" id="save-starter">Save ₹9,996/yr — 2 months free</div>
-<div class="plan-price-sub-billing" id="sub-starter">per month · billed monthly</div>
+<div class="save-line" id="save-starter">Save ₹1,025/yr — 17% off</div>
+<div class="plan-price-sub-billing" id="sub-starter">per month · or ₹4,999/yr</div>
 <div class="wallet-badge">💰 ₹100 wallet credits</div>
 <div class="plan-divider"></div>
 <div class="plan-section-head">① Financial Diagnostic</div>
@@ -548,20 +548,19 @@ Annual <span class="billing-save-badge">Save 17%</span>
 <div class="plan-section-head" style="margin-top:10px;">Analysis & Reports</div>
 <div class="plan-feature"><span class="plan-feature-icon feat-no">✗</span><span style="color:#bbb;">Analysis tools (3–7)</span></div>
 <div class="plan-feature"><span class="plan-feature-icon feat-yes">✓</span> Report preview</div>
-<div class="plan-feature"><span class="plan-feature-icon feat-partial">◐</span> Report download (3/mo wallet)</div>
 <div class="plan-feature"><span class="plan-feature-icon feat-no">✗</span><span style="color:#bbb;">AI observations</span></div>
 <div class="plan-feature"><span class="plan-feature-icon feat-no">✗</span><span style="color:#bbb;">Voice note AI</span></div>
-<div class="plan-feature"><span class="plan-feature-icon feat-no">✗</span><span style="color:#bbb;">Collaboration</span></div>
+<div class="plan-feature"><span class="plan-feature-icon feat-yes">✓</span> External CA access</div>
 <button class="plan-cta cta-outline">Start 14-day trial</button>
 </div>
 <div class="plan-card featured">
 <span class="plan-tag tag-growth">★ Most Popular</span>
 <div class="plan-price">
-<sup>₹</sup><span class="price-amount" id="price-growth">9,999</span>
+<sup>₹</sup><span class="price-amount" id="price-growth">1,305</span>
 <span class="annual-badge" id="badge-growth">ANNUAL</span>
 </div>
-<div class="save-line" id="save-growth">Save ₹20,004/yr — 2 months free</div>
-<div class="plan-price-sub-billing" id="sub-growth">per month · billed monthly</div>
+<div class="save-line" id="save-growth">Save ₹2,661/yr — 17% off</div>
+<div class="plan-price-sub-billing" id="sub-growth">per month · or ₹12,999/yr</div>
 <div class="wallet-badge">💰 ₹250 wallet credits</div>
 <div class="plan-divider"></div>
 <div class="plan-section-head">① Financial Diagnostic</div>
@@ -576,20 +575,21 @@ Annual <span class="billing-save-badge">Save 17%</span>
 <div class="plan-section-head" style="margin-top:10px;">Analysis & Reports</div>
 <div class="plan-feature"><span class="plan-feature-icon feat-yes">✓</span> Impact, Risk, What-if analysis</div>
 <div class="plan-feature"><span class="plan-feature-icon feat-yes">✓</span> Profit Leakage + Heat Map</div>
-<div class="plan-feature"><span class="plan-feature-icon feat-yes">✓</span> Unlimited report download</div>
+<div class="plan-feature"><span class="plan-feature-icon feat-partial">◐</span> Report download (3/mo wallet)</div>
 <div class="plan-feature"><span class="plan-feature-icon feat-yes">✓</span> AI observations & recommendations</div>
 <div class="plan-feature"><span class="plan-feature-icon feat-partial">◐</span> Voice note AI (5/mo wallet)</div>
-<div class="plan-feature"><span class="plan-feature-icon feat-no">✗</span><span style="color:#bbb;">Collaboration</span></div>
+<div class="plan-feature"><span class="plan-feature-icon feat-yes">✓</span> External CA access</div>
+<div class="plan-feature"><span class="plan-feature-icon feat-yes">✓</span> Cross-functional team collab</div>
 <button class="plan-cta cta-solid">Start 14-day trial</button>
 </div>
 <div class="plan-card">
 <span class="plan-tag tag-enterprise">Enterprise</span>
 <div class="plan-price">
-<sup>₹</sup><span class="price-amount" id="price-enterprise">13,499</span>
+<sup>₹</sup><span class="price-amount" id="price-enterprise">2,510</span>
 <span class="annual-badge" id="badge-enterprise">ANNUAL</span>
 </div>
-<div class="save-line" id="save-enterprise">Save ₹27,000/yr — 2 months free</div>
-<div class="plan-price-sub-billing" id="sub-enterprise">per month · billed monthly</div>
+<div class="save-line" id="save-enterprise">Save ₹5,121/yr — 17% off</div>
+<div class="plan-price-sub-billing" id="sub-enterprise">per month · or ₹24,999/yr</div>
 <div class="wallet-badge">💰 ₹750 wallet + 30% top-up bonus</div>
 <div class="plan-divider"></div>
 <div class="plan-section-head">① Financial Diagnostic</div>
@@ -668,17 +668,17 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <div class="annual-plan">
 <div class="annual-plan-name">Starter</div>
 <div class="annual-plan-price">₹416<span style="font-size:12px;color:#888;">/mo</span></div>
-<div class="annual-plan-save">₹49,992/yr total</div>
+<div class="annual-plan-save">₹4,999/yr total</div>
 </div>
 <div class="annual-plan">
 <div class="annual-plan-name">Growth</div>
 <div class="annual-plan-price">₹832<span style="font-size:12px;color:#888;">/mo</span></div>
-<div class="annual-plan-save">₹99,984/yr total</div>
+<div class="annual-plan-save">₹12,999/yr total</div>
 </div>
 <div class="annual-plan">
 <div class="annual-plan-name">Enterprise</div>
 <div class="annual-plan-price">₹2,082<span style="font-size:12px;color:#888;">/mo</span></div>
-<div class="annual-plan-save">₹1,34,988/yr total</div>
+<div class="annual-plan-save">₹24,999/yr total</div>
 </div>
 </div>
 <div class="section-label">Complete feature & value breakdown</div>
@@ -692,8 +692,8 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <th style="width:32%;">Feature</th>
 <th style="width:10%;">CFO Value</th>
 <th style="width:20%;">Business Owner Value</th>
-<th style="width:10%;">Starter <span id="th-starter" style="font-family:var(--mono);font-size:9px;color:#aaa;">₹4,999/mo</span></th>
-<th class="highlight-col" style="width:10%;">Growth <span id="th-growth" style="font-family:var(--mono);font-size:9px;color:#aaa;">₹9,999/mo</span></th>
+<th style="width:10%;">Starter <span id="th-starter" style="font-family:var(--mono);font-size:9px;color:#aaa;">₹502/mo</span></th>
+<th class="highlight-col" style="width:10%;">Growth <span id="th-growth" style="font-family:var(--mono);font-size:9px;color:#aaa;">₹1,305/mo</span></th>
 <th style="width:9%;">Enterprise</th>
 <th style="width:9%;">Custom</th>
 <th style="width:10%;">Value in plan</th>
@@ -708,7 +708,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="chk">✓</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="831" data-sa="693" data-g="400" data-ga="333">₹400</span></td>
+<td class="feat-val"><span class="fv" data-s="103" data-sa="86" data-g="52" data-ga="43">₹52</span></td>
 </tr>
 <tr class="sub-row">
 <td>1.2 Profitability</td>
@@ -717,7 +717,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="chk">✓</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="1252" data-sa="1043" data-g="601" data-ga="501">₹601</span></td>
+<td class="feat-val"><span class="fv" data-s="155" data-sa="129" data-g="78" data-ga="65">₹78</span></td>
 </tr>
 <tr class="sub-row">
 <td>1.3 Efficiency</td>
@@ -726,7 +726,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="chk">✓</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="831" data-sa="693" data-g="400" data-ga="333">₹400</span></td>
+<td class="feat-val"><span class="fv" data-s="103" data-sa="86" data-g="52" data-ga="43">₹52</span></td>
 </tr>
 <tr class="sub-row">
 <td>1.4 Turnover</td>
@@ -735,7 +735,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="xmark">✗</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="350" data-ga="292">₹350</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="46" data-ga="38">₹46</span></td>
 </tr>
 <tr class="sub-row">
 <td>1.5 Business Risk</td>
@@ -744,7 +744,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="xmark">✗</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="550" data-ga="458">₹550</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="72" data-ga="60">₹72</span></td>
 </tr>
 <tr class="sub-row">
 <td>1.6 Financial Risk</td>
@@ -753,7 +753,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="xmark">✗</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="550" data-ga="458">₹550</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="72" data-ga="60">₹72</span></td>
 </tr>
 <tr class="sub-row">
 <td>1.7 Liquidity</td>
@@ -762,7 +762,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="xmark">✗</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="500" data-ga="417">₹500</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="65" data-ga="54">₹65</span></td>
 </tr>
 <tr class="sub-row">
 <td>1.8 Safety</td>
@@ -771,7 +771,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="xmark">✗</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="350" data-ga="292">₹350</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="46" data-ga="38">₹46</span></td>
 </tr>
 <tr class="section-row"><td colspan="8">② Cross-Functional Diagnostic (2.1–2.6) — each dept shows how that team is performing</td></tr>
 <tr class="sub-row">
@@ -781,7 +781,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="chk">✓</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="421" data-sa="351" data-g="200" data-ga="167">₹200</span></td>
+<td class="feat-val"><span class="fv" data-s="52" data-sa="43" data-g="26" data-ga="22">₹26</span></td>
 </tr>
 <tr class="sub-row">
 <td>2.2 Finance</td>
@@ -790,7 +790,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="chk">✓</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="421" data-sa="351" data-g="200" data-ga="167">₹200</span></td>
+<td class="feat-val"><span class="fv" data-s="52" data-sa="43" data-g="26" data-ga="22">₹26</span></td>
 </tr>
 <tr class="sub-row">
 <td>2.3 Management</td>
@@ -799,7 +799,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="xmark">✗</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="200" data-ga="167">₹200</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="26" data-ga="22">₹26</span></td>
 </tr>
 <tr class="sub-row">
 <td>2.4 Material</td>
@@ -808,7 +808,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="xmark">✗</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="200" data-ga="167">₹200</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="26" data-ga="22">₹26</span></td>
 </tr>
 <tr class="sub-row">
 <td>2.5 Operations</td>
@@ -817,7 +817,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="xmark">✗</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="200" data-ga="167">₹200</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="26" data-ga="22">₹26</span></td>
 </tr>
 <tr class="sub-row">
 <td>2.6 HR</td>
@@ -826,7 +826,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="xmark">✗</span></td>
 <td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="200" data-ga="167">₹200</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="26" data-ga="22">₹26</span></td>
 </tr>
 <tr class="section-row"><td colspan="8">Analysis Tools (③–⑦)</td></tr>
 <tr class="sub-row">
@@ -835,7 +835,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="pill pill-engage">DECISION AID</span></td>
 <td><span class="xmark">✗</span></td><td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="400" data-ga="333">₹400</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="52" data-ga="43">₹52</span></td>
 </tr>
 <tr class="sub-row">
 <td>④ Risk Analysis</td>
@@ -843,7 +843,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="pill pill-urgency">THREAT RADAR</span></td>
 <td><span class="xmark">✗</span></td><td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="500" data-ga="417">₹500</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="65" data-ga="54">₹65</span></td>
 </tr>
 <tr class="sub-row">
 <td>⑤ What-if Analysis</td>
@@ -851,7 +851,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="pill pill-urgency">IDEA TESTER</span></td>
 <td><span class="xmark">✗</span></td><td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="601" data-ga="501">₹601</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="78" data-ga="65">₹78</span></td>
 </tr>
 <tr class="sub-row">
 <td>⑥ Profit Leakage</td>
@@ -859,7 +859,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="pill pill-urgency">MONEY FINDER</span></td>
 <td><span class="xmark">✗</span></td><td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="801" data-ga="668">₹801</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="105" data-ga="87">₹105</span></td>
 </tr>
 <tr class="sub-row">
 <td>⑦ Heat Map</td>
@@ -867,7 +867,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="pill pill-engage">QUICK SCAN</span></td>
 <td><span class="xmark">✗</span></td><td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="350" data-ga="292">₹350</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="46" data-ga="38">₹46</span></td>
 </tr>
 <tr class="section-row"><td colspan="8">Reports (⑧–⑫)</td></tr>
 <tr class="sub-row">
@@ -876,16 +876,16 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="pill pill-engage">SNAPSHOT</span></td>
 <td><span class="chk">✓</span></td><td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="311" data-sa="258" data-g="150" data-ga="125">₹150</span></td>
+<td class="feat-val"><span class="fv" data-s="37" data-sa="30" data-g="20" data-ga="17">₹20</span></td>
 </tr>
 <tr class="sub-row">
 <td>⑨ Report Download</td>
 <td><span class="pill pill-engage">Mid</span></td>
 <td><span class="pill pill-engage">SHARE READY</span></td>
-<td><span class="part">3/mo wallet</span></td>
-<td class="highlight-col"><span style="color:var(--teal-mid);font-size:11px;">Unlimited</span></td>
+<td><span class="xmark">✗</span></td>
+<td class="highlight-col"><span class="part">3/mo wallet</span></td>
 <td><span style="color:var(--teal-mid);font-size:11px;">Unlimited</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="932" data-sa="777" data-g="300" data-ga="250">₹300</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="39" data-ga="32">₹39</span></td>
 </tr>
 <tr class="sub-row">
 <td>⑩ AI Observations & Rec.</td>
@@ -893,7 +893,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="pill pill-upgrade">YOUR AI CFO</span></td>
 <td><span class="xmark">✗</span></td><td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="1001" data-ga="834">₹1001</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="131" data-ga="109">₹131</span></td>
 </tr>
 <tr class="sub-row">
 <td>⑪ Report Download (AI)</td>
@@ -902,7 +902,7 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <td><span class="xmark">✗</span></td>
 <td class="highlight-col"><span style="color:var(--teal-mid);font-size:11px;">Unlimited</span></td>
 <td><span style="color:var(--teal-mid);font-size:11px;">Unlimited</span></td><td><span class="part">à la carte</span></td>
-<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="300" data-ga="250">₹300</span></td>
+<td class="feat-val"><span class="fv" data-s="" data-sa="" data-g="130" data-ga="105">₹130</span></td>
 </tr>
 <tr class="sub-row">
 <td>⑫ Voice Note AI</td>
@@ -916,17 +916,17 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 <tr class="section-row"><td colspan="8">⑬ Collaboration</td></tr>
 <tr class="sub-row">
 <td>13.1 External CA Access</td>
-<td><span class="pill pill-urgency">Enterprise</span></td>
+<td><span class="pill pill-aha">All Plans</span></td>
 <td><span class="pill pill-urgency">CA LINK</span></td>
-<td><span class="xmark">✗</span></td><td class="highlight-col"><span class="xmark">✗</span></td>
+<td><span class="chk">✓</span></td><td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
 <td class="feat-val">—</td>
 </tr>
 <tr class="sub-row">
 <td>13.2 Cross-functional Team Collab</td>
-<td><span class="pill pill-urgency">Enterprise</span></td>
+<td><span class="pill pill-aha">Growth+</span></td>
 <td><span class="pill pill-urgency">TEAM VIEW</span></td>
-<td><span class="xmark">✗</span></td><td class="highlight-col"><span class="xmark">✗</span></td>
+<td><span class="xmark">✗</span></td><td class="highlight-col"><span class="chk">✓</span></td>
 <td><span class="chk">✓</span></td><td><span class="part">à la carte</span></td>
 <td class="feat-val">—</td>
 </tr>
@@ -940,9 +940,9 @@ You're saving 17% — that's 2 months free across all plans. Switch anytime.
 </tr>
 <tr class="total-row">
 <td id="tbl-billing-label">Monthly plan price</td><td></td>
-<td id="tbl-price-starter">₹4,999/mo</td>
+<td id="tbl-price-starter">₹502/mo</td>
 <td class="highlight-col" id="tbl-price-growth" style="font-size:15px;">₹9,999/mo</td>
-<td id="tbl-price-enterprise">₹13,499/mo</td>
+<td id="tbl-price-enterprise">₹2,510/mo</td>
 <td style="color:var(--amber);">Custom</td>
 <td></td>
 </tr>
